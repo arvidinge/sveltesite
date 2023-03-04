@@ -17,17 +17,22 @@
 </nav>
 
 <style lang="scss">
+    @use "sass:math";
     @import "../style/colors.scss";
     @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
 
     $gap: 4px;
+    $nav-height: 8rem;
+    $nav-height-hypot: math.hypot($nav-height);
 
     nav {
+        isolation: isolate;
         position: relative;
-        height: 8rem;
+        height: $nav-height;
         width: 100vw;
         font-family: "League Spartan", sans-serif;
         text-transform: uppercase;
+        background-color: white;
     }
 
     .nav-buttons-container {
@@ -39,15 +44,31 @@
         height: calc((100% - $gap * 2) - ($gap/20));
     }
 
-    $transition-in: all 0.3s cubic-bezier(0, 0.14, 0.42, 0.99);
-    $transition-out: all 2s cubic-bezier(0, 0.14, 0.42, 0.99);
-    .nav-button {
-        color: white;
-        background: black;
-        mix-blend-mode: multiply; // The magic
-        transition: all 0.1s linear;
-        cursor: pointer;
+    $transition: all 0.5s ease-in-out;
 
+    @function diagonal-gradient($invert: false) {
+        $anti-alias-amount: 0.15%;
+        $start-color: if($invert==true, black, white);
+        $end-color: if($invert==true, white, black);
+
+        @return linear-gradient(
+            135deg,
+            $start-color 0%,
+            $start-color 50% - $anti-alias-amount,
+            $end-color 50% + $anti-alias-amount,
+            $end-color 100%
+        ); 
+    }
+    .nav-button {
+        mix-blend-mode: multiply; // The magic
+        color: white;
+        background: diagonal-gradient();
+        background-size: calc(200% + $nav-height-hypot) 100%;
+        background-position-x: calc(100% + 1px);
+        cursor: pointer;
+        transition: $transition;
+        border: 4px solid black;
+        
         p {
             user-select: none;
             position: relative;
@@ -56,27 +77,16 @@
             flex-direction: column;
             justify-content: center;
             height: 100%;
+            font-size: 2rem;
 
-            &::before {
-                position: absolute;
-                content: "";
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                z-index: -1;
-                height: 80%;
-                width: 80%;
-                transform: translate(12.5%, 12.5%);
-                background: radial-gradient(
-                    ellipse at 50% 50%,
-                    hsl(0, 0%, 60%) 0%,
-                    black 75%
-                );
-                filter: blur(15px);
-                opacity: 0.3;
-                transition: $transition-out;
-            }
+            background: diagonal-gradient(true);
+            background-size: calc(200% + $nav-height-hypot) 100%;
+            background-position-x: calc(100% + 1px);
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: $transition;
         }
 
         &:nth-child(1),
@@ -84,10 +94,10 @@
             width: 25%;
         }
 
-        &:hover {
-            p::before {
-                opacity: 1;
-                transition: $transition-in;
+        &:hover { 
+            background-position-x: 0%;
+            p {
+                background-position-x: 0%;
             }
         }
     }
