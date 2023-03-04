@@ -1,3 +1,6 @@
+@use "sass:color";
+@import "style/colors.scss";
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -16,4 +19,27 @@
   text-rendering: optimizeLegibility;
 }
 
+body {
+  $lightness-offset: 5%;
+  background: linear-gradient(to right,
+      color.adjust($color-primary, $lightness: $lightness-offset),
+      color.adjust($color-secondary, $lightness: $lightness-offset),
+      color.adjust($color-tertiary, $lightness: $lightness-offset),
+      color.adjust($color-primary, $lightness: $lightness-offset),
+      color.adjust($color-secondary, $lightness: $lightness-offset),
+      color.adjust($color-tertiary, $lightness: $lightness-offset),
+      color.adjust($color-primary, $lightness: $lightness-offset));
+  background-size: 800% 100%;
 
+  animation: scroll-background-right linear 80s infinite;
+}
+
+@keyframes scroll-background-right {
+  from {
+    background-position-x: 400%;
+  }
+
+  to {
+    background-position-x: 0%;
+  }
+}
