@@ -24,6 +24,7 @@
     $gap: 4px;
     $nav-height: 8rem;
     $nav-height-hypot: math.hypot($nav-height);
+    $transition: all 1.5s cubic-bezier(.08,.68,.53,.99);
 
     nav {
         isolation: isolate;
@@ -44,10 +45,8 @@
         height: calc((100% - $gap * 2) - ($gap/20));
     }
 
-    $transition: all 0.5s ease-in-out;
-
     @function diagonal-gradient($invert: false) {
-        $anti-alias-amount: 0.15%;
+        $anti-alias-amount: 0%;
         $start-color: if($invert==true, black, white);
         $end-color: if($invert==true, white, black);
 
@@ -57,8 +56,9 @@
             $start-color 50% - $anti-alias-amount,
             $end-color 50% + $anti-alias-amount,
             $end-color 100%
-        ); 
+        );
     }
+
     .nav-button {
         mix-blend-mode: multiply; // The magic
         color: white;
@@ -67,8 +67,8 @@
         background-position-x: calc(100% + 1px);
         cursor: pointer;
         transition: $transition;
-        border: 4px solid black;
-        
+        border: 2px solid black;
+
         p {
             user-select: none;
             position: relative;
@@ -94,7 +94,7 @@
             width: 25%;
         }
 
-        &:hover { 
+        &:hover {
             background-position-x: 0%;
             p {
                 background-position-x: 0%;
@@ -119,7 +119,7 @@
             $color-secondary,
             $color-primary
         );
-        backdrop-filter: blur(50px);
+        filter: brightness(120%);
 
         animation: scroll-right linear 10s infinite;
     }
