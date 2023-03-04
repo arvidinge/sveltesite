@@ -2,7 +2,6 @@
 </script>
 
 <nav>
-    <div class="nav-background" />
     <div class="nav-buttons-container">
         <div class="nav-button">
             <p>Projects</p>
@@ -27,13 +26,14 @@
     $transition: all 1.5s cubic-bezier(.08,.68,.53,.99);
 
     nav {
-        isolation: isolate;
+        // isolation: isolate;
         position: relative;
         height: $nav-height;
         width: 100vw;
         font-family: "League Spartan", sans-serif;
         text-transform: uppercase;
         background-color: white;
+        mix-blend-mode: multiply; // The magic
     }
 
     .nav-buttons-container {
@@ -43,6 +43,7 @@
         gap: $gap;
         padding: $gap;
         height: calc((100% - $gap * 2) - ($gap/20));
+        background: transparent;
     }
 
     @function diagonal-gradient($invert: false) {
@@ -60,7 +61,6 @@
     }
 
     .nav-button {
-        mix-blend-mode: multiply; // The magic
         color: white;
         background: diagonal-gradient();
         background-size: calc(200% + $nav-height-hypot) 100%;
@@ -102,35 +102,4 @@
         }
     }
 
-    .nav-background {
-        position: absolute;
-        height: 100%;
-        width: 400vw;
-        z-index: 0;
-        background: linear-gradient(
-            to right,
-            $color-primary,
-            $color-secondary,
-            $color-tertiary,
-            $color-secondary,
-            $color-primary,
-            $color-secondary,
-            $color-tertiary,
-            $color-secondary,
-            $color-primary
-        );
-        filter: brightness(120%);
-
-        animation: scroll-right linear 10s infinite;
-    }
-
-    @keyframes scroll-right {
-        from {
-            transform: translateX(-50%);
-        }
-
-        to {
-            transform: translateX(0%);
-        }
-    }
 </style>
