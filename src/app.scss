@@ -1,5 +1,6 @@
 @use "sass:color";
-@import "style/colors.scss";
+@import "src/style/colors";
+@import "src/style/variables";
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -14,13 +15,21 @@
 }
 
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
   text-rendering: optimizeLegibility;
 }
 
+html {
+  height: 100%;
+}
+
 body {
-  $lightness-offset: 5%;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  $lightness-offset: $bg-lightness-offset;
   background: linear-gradient(to right,
       color.adjust($color-primary, $lightness: $lightness-offset),
       color.adjust($color-secondary, $lightness: $lightness-offset),

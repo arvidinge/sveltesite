@@ -9,8 +9,12 @@
 </div>
 
 <style lang="scss">
+  @import "src/style/variables";
+
   .bodywrap {
+    padding: $gap;
     display: flex;
     flex-direction: column;
+    gap: $gap;
   }
 </style>
