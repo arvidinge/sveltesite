@@ -1,11 +1,21 @@
 <nav>
   <div class="nav-buttons-container">
-    <div class="nav-button">
-      <p data-text="Projects">Projects</p>
+    <div class="home-button gradient-button">
+      <p>Home</p>
     </div>
-    <div class="nav-button">
-      <p data-text="About">About</p>
+    <div class="nav-button gradient-button">
+      <p>About</p>
     </div>
+    <div class="nav-button gradient-button">
+      <p>Resume</p>
+    </div>
+    <div class="nav-button gradient-button">
+      <p>Projects</p>
+    </div>
+    <div class="nav-button gradient-button">
+      <p>Contact</p>
+    </div>
+
     <!-- <div class="social-section">
       <p>Twitter</p>
     </div> -->
@@ -30,6 +40,7 @@
     text-transform: uppercase;
     background-color: white;
     mix-blend-mode: multiply; // The magic
+    overflow: hidden;
   }
 
   .nav-buttons-container {
@@ -55,7 +66,15 @@
     );
   }
 
+  .home-button {
+    width: $nav-height;
+  }
+
   .nav-button {
+    flex: 1;
+  }
+
+  .gradient-button {
     color: white;
     background: diagonal-gradient();
     background-size: calc(200% + $nav-height-hypot) 100%;
@@ -82,11 +101,6 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
       transition: $transition;
-    }
-
-    &:nth-child(1),
-    &:nth-child(2) {
-      width: 25%;
     }
 
     &:hover {
