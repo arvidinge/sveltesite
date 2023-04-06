@@ -7,7 +7,7 @@
 </main> 
 
 <style lang="scss">
-  @use 'src/style/colors';
+  @import 'src/style/colors';
   main {
     width: 100% !important;
     padding: 30px;
@@ -16,15 +16,15 @@
       margin: 0px;
       font-size: 6rem;
     }
-    mix-blend-mode: multiply;
+    // mix-blend-mode: multiply;
     p {
       font-size: 1.5rem;
       position: relative;
       z-index: 1;
     }
     color: white;
-    border: 2px solid black;
-    background: black;
+    // border: 2px solid black;
+    background: $color-background;
     font-weight: 400;
     position: relative;
     height: 100%;

@@ -1,8 +1,5 @@
 <nav>
   <div class="nav-buttons-container">
-    <div class="home-button gradient-button">
-      <p>Home</p>
-    </div>
     <div class="nav-button gradient-button">
       <p>About</p>
     </div>
@@ -15,10 +12,6 @@
     <div class="nav-button gradient-button">
       <p>Contact</p>
     </div>
-
-    <!-- <div class="social-section">
-      <p>Twitter</p>
-    </div> -->
   </div>
 </nav>
 
@@ -38,8 +31,8 @@
 
     font-family: "League Spartan", sans-serif;
     text-transform: uppercase;
-    background-color: white;
-    mix-blend-mode: multiply; // The magic
+    background-color: $color-background;
+    // mix-blend-mode: multiply; // The magic
     overflow: hidden;
   }
 
@@ -54,8 +47,8 @@
 
   @function diagonal-gradient($invert: false) {
     $anti-alias-amount: 0%;
-    $start-color: if($invert==true, black, white);
-    $end-color: if($invert==true, white, black);
+    $start-color: if($invert==true, $color-background, $color-primary);
+    $end-color: if($invert==true, $color-primary, $color-background);
 
     @return linear-gradient(
       135deg,
@@ -75,13 +68,13 @@
   }
 
   .gradient-button {
-    color: white;
     background: diagonal-gradient();
     background-size: calc(200% + $nav-height-hypot) 100%;
     background-position-x: calc(100% + 1px);
     cursor: pointer;
     transition: $transition;
-    border: 2px solid black;
+    // border: $gap solid black;
+    border-bottom: 2px solid $color-primary;
 
     p {
       user-select: none;
@@ -104,6 +97,7 @@
     }
 
     &:hover {
+
       background-position-x: 0%;
       p {
         background-position-x: 0%;

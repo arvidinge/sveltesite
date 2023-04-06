@@ -1,7 +1,7 @@
 <script lang="ts">
   import Main from "./lib/Main.svelte";
   import Navbar from "./lib/Navbar.svelte";
-    import Projects from "./lib/Projects.svelte";
+  import Projects from "./lib/Projects.svelte";
 </script>
 
 <div class="bodywrap">
