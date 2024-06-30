@@ -20,35 +20,3 @@
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
 }
-
-html {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  $lightness-offset: $bg-lightness-offset;
-  background: linear-gradient(to right,
-      color.adjust($color-primary, $lightness: $lightness-offset),
-      color.adjust($color-secondary, $lightness: $lightness-offset),
-      color.adjust($color-tertiary, $lightness: $lightness-offset),
-      color.adjust($color-primary, $lightness: $lightness-offset),
-      color.adjust($color-secondary, $lightness: $lightness-offset),
-      color.adjust($color-tertiary, $lightness: $lightness-offset),
-      color.adjust($color-primary, $lightness: $lightness-offset));
-  background-size: 800% 100%;
-
-  animation: scroll-background-right linear 80s infinite;
-}
-
-@keyframes scroll-background-right {
-  from {
-    background-position-x: 400%;
-  }
-
-  to {
-    background-position-x: 0%;
-  }
-}

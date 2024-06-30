@@ -1,17 +1,20 @@
 <nav>
   <div class="nav-buttons-container">
-    <div class="nav-button gradient-button">
+    <button class="nav-button gradient-button">
+      <p>Home</p>
+    </button>
+    <button class="nav-button gradient-button">
       <p>About</p>
-    </div>
-    <div class="nav-button gradient-button">
+    </button>
+    <!-- <button class="nav-button gradient-button">
       <p>Resume</p>
-    </div>
-    <div class="nav-button gradient-button">
+    </button> -->
+    <button class="nav-button gradient-button">
       <p>Projects</p>
-    </div>
-    <div class="nav-button gradient-button">
+    </button>
+    <button class="nav-button gradient-button">
       <p>Contact</p>
-    </div>
+    </button>
   </div>
 </nav>
 
@@ -19,20 +22,25 @@
   @use "sass:math";
   @import "src/style/colors";
   @import "src/style/variables";
-  @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
 
   $nav-height: 8rem;
   $nav-height-hypot: math.hypot($nav-height);
   $transition: all 1.5s cubic-bezier(0.08, 0.68, 0.53, 0.99);
 
+  button {
+    all: unset;
+  }
+  button.nav-button > p {
+    pointer-events: none;
+  }
+
   nav {
     position: relative;
     height: $nav-height;
 
-    font-family: "League Spartan", sans-serif;
+    font-weight: 400;
     text-transform: uppercase;
     background-color: $color-background;
-    // mix-blend-mode: multiply; // The magic
     overflow: hidden;
   }
 
@@ -59,10 +67,6 @@
     );
   }
 
-  .home-button {
-    width: $nav-height;
-  }
-
   .nav-button {
     flex: 1;
   }
@@ -74,7 +78,7 @@
     cursor: pointer;
     transition: $transition;
     // border: $gap solid black;
-    border-bottom: 2px solid $color-primary;
+    // border-bottom: 2px solid $color-primary;
 
     p {
       user-select: none;
@@ -84,7 +88,9 @@
       flex-direction: column;
       justify-content: center;
       height: 100%;
-      font-size: 2rem;
+
+      font-size: 1.5rem;
+      letter-spacing: 0.5rem;
 
       background: diagonal-gradient($invert: true);
       background-size: calc(200% + $nav-height-hypot) 100%;

@@ -2,12 +2,32 @@
 </script>
 
 <main>
-  <h1>Hello, I'm Arvid</h1>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum rem est odio quo eveniet sapiente enim iure magnam, alias sint vero eos quas, autem quibusdam voluptate asperiores officiis labore cum.</p>
+  <div class="introduction">
+    <h1 class="header">Hello, I'm Arvid ➡ <img alt="Arvid" class="my-face" src="king_full.png"/></h1>
+    <p>My site is currently under construction :( but you are welcome back later :)</p>
+  </div>
 </main> 
 
 <style lang="scss">
   @import 'src/style/colors';
+
+  .introduction {
+    text-align: center;
+  }
+
+  .header {
+    text-wrap: nowrap;
+    text-shadow: 0 0 0.75rem rgba(255, 255, 255, 0.784);
+    margin-bottom: 2rem;
+  }
+
+  img.my-face {
+    vertical-align: middle;
+    height: 12rem;
+    border: 5px solid $color-primary;
+    border-radius: 999rem;
+  }
+
   main {
     width: 100% !important;
     padding: 30px;
@@ -16,14 +36,12 @@
       margin: 0px;
       font-size: 6rem;
     }
-    // mix-blend-mode: multiply;
     p {
       font-size: 1.5rem;
       position: relative;
       z-index: 1;
     }
     color: white;
-    // border: 2px solid black;
     background: $color-background;
     font-weight: 400;
     position: relative;
