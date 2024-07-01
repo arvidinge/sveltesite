@@ -72,6 +72,7 @@
   }
 
   .gradient-button {
+    position: relative;
     background: diagonal-gradient();
     background-size: calc(200% + $nav-height-hypot) 100%;
     background-position-x: calc(100% + 1px);
@@ -81,6 +82,8 @@
     // border-bottom: 2px solid $color-primary;
 
     p {
+      position: relative;
+      z-index: 50;
       user-select: none;
       position: relative;
       text-align: center;
@@ -102,7 +105,7 @@
       transition: $transition;
     }
 
-    &:hover {
+    &:hover, &:focus {
 
       background-position-x: 0%;
       p {

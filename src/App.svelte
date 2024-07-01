@@ -2,11 +2,12 @@
   import Main from "./lib/Main.svelte";
   import Navbar from "./lib/Navbar.svelte";
   import Projects from "./lib/Projects.svelte";
+  import { captions } from "./lib/stores";
 </script>
 
 <div class="bodywrap">
+  <!-- {#if captions } -->
   <Navbar />
-  <!-- <Projects /> -->
   <Main />
 </div>
 
